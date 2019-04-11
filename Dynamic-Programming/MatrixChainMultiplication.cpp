@@ -48,11 +48,11 @@ int matrixChainMultiDP(vector<pair<int,int> > &v)
         for(int i=0;i<n-len+1;i++)
         {
              int j = i+len-1;
-             dp[i][i+len-1] = INT_MAX;
+             dp[i][j] = INT_MAX;
              for(int k=i;k<j;k++)
              {
-                   ans = dp[i][k] + dp[k+1][i+len-1] + (v[i].first)*(v[k].second)*(v[i+len-1].second);
-                   dp[i][i+len-1] = min(dp[i][i+len-1],ans);
+                   ans = dp[i][k] + dp[k+1][j] + (v[i].first)*(v[k].second)*(v[j].second);
+                   dp[i][j] = min(dp[i][j],ans);
              }
         }
     }

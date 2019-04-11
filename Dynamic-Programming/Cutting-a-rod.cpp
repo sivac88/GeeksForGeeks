@@ -62,3 +62,47 @@ int main()
     }
     return 0;
 }
+
+
+/*
+
+ONE STATE DP (WE DONT HAVE TO STORE THE CURRENT LEN AND N SEPERATELY)
+
+// A Naive recursive solution for Rod cutting problem
+#include<bits/stdc++.h>
+using namespace std;
+
+int cutRod(int* a,int n)
+{
+    if(n==0) return 0;
+    int ans = -1;
+    for(int i=1;i<=n;i++)
+        ans = max(ans,cutRod(a,n-i)+a[i-1]);
+    return ans;
+}
+
+int cutRodDP(int* a,int n)
+{
+    int dp[n+1];
+    dp[0]=0;
+    for(int i=1;i<=n;i++)
+    {
+        dp[i]=-1;
+        for(int j=1;j<=i;j++)
+        {
+            dp[i]=max(dp[i],dp[i-j]+a[j-1]);
+        }
+    }
+    return dp[n];
+}
+
+int main()
+{
+	int arr[] = {3, 5, 8, 9, 10, 17, 17, 20};
+	int size = sizeof(arr)/sizeof(arr[0]);
+	printf("Maximum Obtainable Value is %d \n", cutRodDP(arr, size));
+	return 0;
+}
+
+
+*/
